@@ -121,6 +121,8 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
+vim.opt.smartindent = true
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -147,6 +149,7 @@ vim.opt.splitbelow = true
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.tabstop = 4
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -251,18 +254,18 @@ require('lazy').setup({
   --    require('gitsigns').setup({ ... })
   --
   -- See `:help gitsigns` to understand what the configuration keys do
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
-  },
+  -- { -- Adds git related signs to the gutter, as well as utilities for managing changes
+  --   'lewis6991/gitsigns.nvim',
+  --   opts = {
+  --     signs = {
+  --       add = { text = '+' },
+  --       change = { text = '~' },
+  --       delete = { text = '_' },
+  --       topdelete = { text = '‾' },
+  --       changedelete = { text = '~' },
+  --     },
+  --   },
+  -- },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
@@ -873,6 +876,21 @@ require('lazy').setup({
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       vim.cmd.colorscheme 'kanagawa-wave'
+    end,
+  },
+
+  {
+    'max397574/colortils.nvim',
+    cmd = 'Colortils',
+    config = function()
+      require('colortils').setup()
+    end,
+  },
+
+  {
+    'NvChad/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
     end,
   },
 
